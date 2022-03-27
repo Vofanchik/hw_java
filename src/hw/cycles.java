@@ -6,7 +6,7 @@ public class cycles {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        dz15();
+        dz18();
 
     }
     public static int fact(int a){
@@ -114,6 +114,8 @@ public class cycles {
     }
 
     public static void dz8() {
+        int a;
+        a = scan.nextInt();
 
     }
 
@@ -246,6 +248,23 @@ public class cycles {
 
     }
 
+    public static void dz18(){
+        int x,y,z;
+        z=0;
+        for (int i = 100; i<1000;i++){
+            y = i;
+            do{
+                                x = y%10;
+                y = y/10;
+                z+=fact(x);
+            }while (y!=0);
+            if(z==i){
+                System.out.println(i);
+            }
+            z=0;
+        }
+    }
+
     public static void dz19() {
         int a;
         a = scan.nextInt();
@@ -258,6 +277,12 @@ public class cycles {
             }
         }
         System.out.println("нет");
+    }
+
+    public static void dz20(){
+        int a;
+        a = scan.nextInt();
+        for (int i = 1; i<0; );
     }
 
 }
