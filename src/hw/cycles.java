@@ -1,12 +1,14 @@
 package hw;
 
+import java.util.PrimitiveIterator;
 import java.util.Scanner;
 
 public class cycles {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        dz18();
+
+        dz16();
 
     }
     public static int fact(int a){
@@ -114,9 +116,24 @@ public class cycles {
     }
 
     public static void dz8() {
-        int a;
-        a = scan.nextInt();
-
+        int user,low, high,mid;
+        user = scan.nextInt();
+        high = user;
+        low=0;
+        do{
+            mid = (low+high)/2;
+            if(Math.pow(mid,3)==user){
+                System.out.println(mid);
+                return;
+            }
+            else if(Math.pow(mid,3)>user){
+                high=mid-1;
+            }
+            else {
+                low = mid+1;
+            }}
+         while (low<=high);
+        System.out.println("Не существует");
     }
 
     public static void dz9() {
@@ -244,9 +261,34 @@ public class cycles {
             c+=((1.0+i)/fact(i));
         }
         System.out.println(c);
+    }
+
+    public static void dz16(){
+        double pi = 3.14;
+        double d = 1.0*1/1000;
+        double e = 2.72;
+//        double firstex = 1;
+//        int firstex_loop = 2;
+//        do{
+//            firstex+=1/(Math.pow(firstex_loop,2));
+//            firstex_loop++;
+//        } while (d<(Math.pow(pi,2)/6)-firstex);
+//        System.out.println(firstex);
+
+        double secex = 1.0*1/3;
+        int sec_loop = 2;
+        int sec_loop_2 = 4;
+        do{
+            secex+=1.0*1/(sec_loop*sec_loop_2);
+            sec_loop++;
+            sec_loop_2++;
+        } while (d<1.0*3/4-secex);
+        System.out.println(secex);
+
 
 
     }
+
 
     public static void dz18(){
         int x,y,z;
