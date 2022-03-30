@@ -267,13 +267,15 @@ public class cycles {
         double pi = 3.14;
         double d = 1.0*1/1000;
         double e = 2.72;
-//        double firstex = 1;
-//        int firstex_loop = 2;
-//        do{
-//            firstex+=1/(Math.pow(firstex_loop,2));
-//            firstex_loop++;
-//        } while (d<(Math.pow(pi,2)/6)-firstex);
-//        System.out.println(firstex);
+
+        int a = scan.nextInt();
+        double firstex = 1;
+        int firstex_loop = 2;
+        do{
+            firstex+=1/(Math.pow(firstex_loop,2));
+            firstex_loop++;
+        } while (d<(Math.pow(pi,2)/6)-firstex);
+        System.out.println(firstex);
 
         double secex = 1.0*1/3;
         int sec_loop = 2;
@@ -284,6 +286,16 @@ public class cycles {
             sec_loop_2++;
         } while (d<1.0*3/4-secex);
         System.out.println(secex);
+
+        double third_sum=1.0;
+        int loop_third = 1;
+
+        while (d<1.0*Math.pow(e, a)-1.0*third_sum){
+            third_sum+=Math.pow(a,loop_third)/fact(loop_third);
+            loop_third++;
+        }
+
+        System.out.println(third_sum);
 
 
 
