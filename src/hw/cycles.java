@@ -7,7 +7,8 @@ public class cycles {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        dz23();
+
+        dz16();
 
     }
     public static int fact(int a){
@@ -266,6 +267,8 @@ public class cycles {
         double pi = 3.14;
         double d = 1.0*1/1000;
         double e = 2.72;
+
+        int a = scan.nextInt();
         double firstex = 1;
         int firstex_loop = 2;
         do{
@@ -283,64 +286,20 @@ public class cycles {
             sec_loop_2++;
         } while (d<1.0*3/4-secex);
         System.out.println(secex);
-    }
 
-    public static void dz17(){
-        int a,b,sum1,sum2;
-        int c = 0;
-        //если или
-//        for(int j = 2;j<10;j++){
-//            System.out.println("При умножении на " + j);
-//            for(int i=10; i<100;i++){
-//                a=i;
-//                sum1=0;
-//                sum2=0;
-//                while (a!=0){
-//                b = a % 10;
-//                a /= 10;
-//                sum1+=b;
-//                }
-//                a=i*j;
-//                while (a!=0){
-//                    b = a % 10;
-//                    a /= 10;
-//                    sum2+=b;
-//                }
-//                if (sum1==sum2){
-//                    System.out.println(i);
-//                }
-//
-//        }
-//    }
-        //если и
-        for(int i=10; i<100;i++){
-                c=0;
-                for(int j = 2;j<10;j++){
-                    a=i;
-                    sum1=0;
-                    sum2=0;
-                    while (a!=0){
-                    b = a % 10;
-                    a /= 10;
-                    sum1+=b;
-                    }
-                    a=i*j;
-                    while (a!=0){
-                        b = a % 10;
-                        a /= 10;
-                        sum2+=b;
-                    }
-                    if (sum1==sum2){
-                        c++;
-                    }
-                    if (c==8){
-                        System.out.println(i);
-                    }
+        double third_sum=1.0;
+        int loop_third = 1;
 
+        while (d<1.0*Math.pow(e, a)-1.0*third_sum){
+            third_sum+=Math.pow(a,loop_third)/fact(loop_third);
+            loop_third++;
         }
-    }
 
-        }
+        System.out.println(third_sum);
+
+
+
+    }
 
 
     public static void dz18(){
@@ -375,86 +334,9 @@ public class cycles {
     }
 
     public static void dz20(){
-        int a,b;
-        b=0;
+        int a;
         a = scan.nextInt();
-        for (int i = 1; i < a; i++) {
-            if (a % i == 0) {
-                b+=i;
-            }
-        }
-        if (a == b){
-            System.out.println("Совершенно");
-        } else System.out.println("не Совершенно");
+        for (int i = 1; i<0; );
     }
 
-    public static void dz21(){
-        int a,i ;
-        a = scan.nextInt();
-        int lengh = 0;
-        i = 1;
-        while (lengh<a){
-            System.out.print(i);
-            lengh+=countNumbers(i);
-            i++;
-        }
-        System.out.println("\n"+(int)((i-1)/Math.pow(10, lengh-a)%10));
-    }
-
-    public static void dz22(){
-        int a,i,c;
-        a = scan.nextInt();
-        int lengh = 0;
-        i = 1;
-        c=1;
-
-        while (lengh<a){
-            i=c*c;
-            System.out.print(i);
-            lengh+=countNumbers(i);
-            c++;
-        }
-        System.out.println("\n"+(int)((i-1)/Math.pow(10, lengh-a)%10));
-    }
-
-    public static void dz23(){
-        int a,i,c;
-        a = scan.nextInt();
-        int lengh = 0;
-        i = 0;
-        c=0;
-
-        while (lengh<a){
-            i=fibonachi(c);
-            System.out.print(i);
-            lengh+=countNumbers(i);
-            c++;
-        }
-        System.out.println("\n"+(int)((i-1)/Math.pow(10, lengh-a)%10));
-    }
-
-
-    public static int countNumbers(int a){
-        int count=0;
-        while (a!=0){
-            a/=10;
-            count++;
-        } return count;
-    }
-    public static int fibonachi(int a) {
-        int f, s, t;
-        f = 1;
-        s = 1;
-        t = f + s;
-        if(a==0||a==1){
-            return 1;
-        }
-        for (int i = 2; i <= a; i++) {
-            t = f + s;
-            f = s;
-            s = t;
-        }
-        return t;
-
-    }
 }
