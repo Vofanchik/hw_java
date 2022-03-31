@@ -4,12 +4,14 @@ import java.util.Random;
 
 public class Arrays_2 {
     public static void main(String[] args) {
-        int n = 5;
+        int n = 4;
         int m =5;
-        int a[][] = inputArray(n,m, 0,4);
+//        int a[][] = inputArray(n,m, 0,2);
+        int a[][] = {{0,0,0,0,1},{0,1,0,1,0},{0,0,0,0,0},{0,5,4,0,0}};
+
         printArray(a,n,m);
 //        System.out.println(task2(a,n,m));
-        task6(a,n,m);
+        task72(a,n,m);
 
     }
 
@@ -91,6 +93,35 @@ public class Arrays_2 {
         System.out.println();
         printArray(arr,n,m);
     }
+    public static void task71(int arr[][], int n, int m) {
+        boolean projArr[]= new boolean[m];
+        boolean unit=true;
+        for (int i = 0; i < m; i++) {
+            unit=true;
+            for (int j = 0; j < n; j++) {
+                if (arr[j][i]!=0)unit=false;
+            }
+            projArr[i]=unit;
+
+        }
+        printArrayBool(projArr,m);}
+
+    public static void task72(int[][] arr, int n, int m) {
+        boolean projArr[]= new boolean[n];
+        boolean unit=false;
+        for (int i = 0; i < n; i++) {
+            unit=false;
+            for (int j = 1; j < m; j++) {
+                if (arr[i][j]>=arr[i][j-1])unit=true;
+                else {
+                    unit=false;
+                    break;
+                }
+            }
+            projArr[i]=unit;
+
+        }
+        printArrayBool(projArr,n);}
 
     public  static int[][] inputArray(int n, int m, int a, int b) {
         int arr[][] = new int[n][m];
@@ -113,5 +144,11 @@ public class Arrays_2 {
             }
             System.out.println();
         }
+    }
+    public static void printArrayBool(boolean[] a, int n){
+        for (int i = 0; i < n; i++){
+            System.out.print(a[i] + ",");
+        }
+        System.out.println();
     }
 }
