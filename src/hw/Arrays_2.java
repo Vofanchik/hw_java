@@ -5,13 +5,15 @@ import java.util.Random;
 public class Arrays_2 {
     public static void main(String[] args) {
         int n = 3;
-        int m = 3;
-        int a[][] = inputArray(n, m, 10, 100);
+        int m = 6;
+//        int a[][] = inputArray(n, m, 10, 100);
 //        int a[][] = {{5, 4, 6}, {10, 3, 8},  {0, 2, 0}};
 
+//        printArray(a, n, m);
+        int a[][] = task12(n, m);
         printArray(a, n, m);
-//        System.out.println(task2(a,n,m));
-        task9(a, n, m);
+
+//        task9(a, n, m);
 
     }
 
@@ -194,33 +196,71 @@ public class Arrays_2 {
             for (int j = 0; j < m; j++) {
                 sum += arr[i][j];
             }
-            sum/=m;
+            sum /= m;
             projArr[i] = sum;
         }
         printArrayDouble(projArr, n);
     }
 
     public static void task9(int[][] arr, int n, int m) {
-        int a=arr[0][0];
-        int min,minn,minm;
+        int a = arr[0][0];
+        int min, minn, minm;
 
         for (int i = 0; i < n; i++) {
-            min=arr[i][0];
+            min = arr[i][0];
 //            System.out.println(min);
-            minm=0;
-            minn=i;
+            minm = 0;
+            minn = i;
             for (int j = 1; j < m; j++) {
-                if (arr[i][j]<min){min=arr[i][j];minm=j;minn=i;}
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                    minm = j;
+                    minn = i;
+                }
             }
             for (int j = 0; j < n; j++) {
-                if (arr[j][minm]>min){break;}
-                else if (j==n-1){System.out.println(min+"["+minn+"]"+"["+minm+"]"); return;}
+                if (arr[j][minm] > min) {
+                    break;
+                } else if (j == n - 1) {
+                    System.out.println(min + "[" + minn + "]" + "[" + minm + "]");
+                    return;
+                }
             }
         }
         System.out.println("Не существует");
 
     }
 
+    public static int[][] task12(int n, int m) {
+        int[][] arr = new int[n][m];
+        int now = 1;
+        int max = n * m;
+        int nmin = 0;
+        int nmax = n - 1;
+        int mmin = 0;
+        int mmax = m - 1;
+
+        while (now <= max) {
+            for (int i = mmin; now <= max && i <= mmax; i++) {
+                arr[nmin][i] = now++;
+            }
+            nmin++;
+            for (int j = nmin; now <= max && j <= nmax; j++) {
+                arr[j][mmax] = now++;
+            }
+            mmax--;
+            for (int k = mmax; now <= max && k >= mmin; k--) {
+                arr[nmax][k] = now++;
+            }
+            nmax--;
+            for (int l = nmax; now <= max && l >= nmin; l--) {
+                arr[l][mmin] = now++;
+            }
+            mmin++;
+        }
+
+        return arr;
+    }
 
 
     public static int[][] inputArray(int n, int m, int a, int b) {
@@ -259,6 +299,7 @@ public class Arrays_2 {
         }
         System.out.println();
     }
+
     public static void printArrayDouble(double[] a, int n) {
         for (int i = 0; i < n; i++) {
             System.out.print(a[i] + ",");
